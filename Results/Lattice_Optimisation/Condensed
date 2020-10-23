@@ -1,0 +1,27 @@
+Using Shell Script
+CaO  a = b= c = 4.760
+MgO  a = b= =c =4.380
+
+Using CASTEP
+Mg3Ca
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      4.783353          alpha =   90.000000
+                    b =      4.783353          beta  =   90.000000
+                    c =      4.783353          gamma =   90.000000
+
+                Current cell volume =           109.445335 A**3
+Mg2Ca2
+                       Lattice parameters(A)       Cell Angles
+                    a =      4.977844          alpha =   90.000000
+                    b =      5.002645          beta  =   90.000000
+                    c =      5.002645          gamma =   90.000000
+
+                Current cell volume =           124.577792 A**3
+MgCa3
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      5.092221          alpha =   90.000000
+                    b =      5.092221          beta  =   90.000000
+                    c =      5.092221          gamma =   90.000000
+                Current cell volume =           132.044911 A**3

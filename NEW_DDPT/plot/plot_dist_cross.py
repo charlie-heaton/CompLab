@@ -6,10 +6,10 @@ from numpy import ma
 
 infile='dist.dat'			  #First input file
 infile2='crosscor.dat'                    #Second input file
-outname='graph'	  		          #Name output files will take
-xlbl='Amino Acid Number'
-ylbl='Amino Acid Number'
-ttl=''
+outname='Dist_Cross'	  		          #Name output files will take
+xlbl='Atom Number'
+ylbl='Atom Number'
+ttl='Cross Correlations and Distances Between Atoms'
 
 mi=[]
 mi2=[]

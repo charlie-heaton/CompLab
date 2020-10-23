@@ -1,0 +1,505 @@
+Running Castep for lattice constant 4.00
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:39.13
+Pressure is 203.6850
+
+Running Castep for lattice constant 4.01
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:39.55
+Pressure is 201.5051
+
+Running Castep for lattice constant 4.02
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:38.36
+Pressure is 197.8738
+
+Running Castep for lattice constant 4.03
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:39.27
+Pressure is 196.4585
+
+Running Castep for lattice constant 4.04
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:39.34
+Pressure is 197.9047
+
+Running Castep for lattice constant 4.05
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:39.90
+Pressure is 187.0573
+
+Running Castep for lattice constant 4.06
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:39.42
+Pressure is 190.4731
+
+Running Castep for lattice constant 4.07
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:39.94
+Pressure is 176.9684
+
+Running Castep for lattice constant 4.08
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:40.94
+Pressure is 175.9634
+
+Running Castep for lattice constant 4.09
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:39.79
+Pressure is 165.4386
+
+Running Castep for lattice constant 4.10
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:43.14
+Pressure is 165.6003
+
+Running Castep for lattice constant 4.11
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:40.27
+Pressure is 153.2034
+
+Running Castep for lattice constant 4.12
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:42.03
+Pressure is 155.5560
+
+Running Castep for lattice constant 4.13
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:41.08
+Pressure is 149.1439
+
+Running Castep for lattice constant 4.14
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:41.42
+Pressure is 155.2035
+
+Running Castep for lattice constant 4.15
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:41.57
+Pressure is 143.4192
+
+Running Castep for lattice constant 4.16
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:41.46
+Pressure is 145.9187
+
+Running Castep for lattice constant 4.17
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:41.97
+Pressure is 137.4181
+
+Running Castep for lattice constant 4.18
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:41.32
+Pressure is 140.7242
+
+Running Castep for lattice constant 4.19
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:42.88
+Pressure is 131.5807
+
+Running Castep for lattice constant 4.20
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:41.59
+Pressure is 133.1945
+
+Running Castep for lattice constant 4.21
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:42.02
+Pressure is 120.3383
+
+Running Castep for lattice constant 4.22
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:47.53
+Pressure is 121.2319
+
+Running Castep for lattice constant 4.23
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:41.98
+Pressure is 112.3666
+
+Running Castep for lattice constant 4.24
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:42.15
+Pressure is 110.1364
+
+Running Castep for lattice constant 4.25
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:41.46
+Pressure is 106.4143
+
+Running Castep for lattice constant 4.26
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:42.12
+Pressure is 106.1327
+
+Running Castep for lattice constant 4.27
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:42.73
+Pressure is 97.3518
+
+Running Castep for lattice constant 4.28
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:42.32
+Pressure is 96.6718
+
+Running Castep for lattice constant 4.29
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:42.08
+Pressure is 95.1612
+
+Running Castep for lattice constant 4.30
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:43.25
+Pressure is 92.4118
+
+Running Castep for lattice constant 4.31
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:43.05
+Pressure is 91.1306
+
+Running Castep for lattice constant 4.32
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:43.96
+Pressure is 90.8904
+
+Running Castep for lattice constant 4.33
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:43.12
+Pressure is 85.7857
+
+Running Castep for lattice constant 4.34
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:42.67
+Pressure is 87.3615
+
+Running Castep for lattice constant 4.35
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:42.79
+Pressure is 83.1881
+
+Running Castep for lattice constant 4.36
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:41.32
+Pressure is 77.5463
+
+Running Castep for lattice constant 4.37
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:39.90
+Pressure is 73.3343
+
+Running Castep for lattice constant 4.38
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:41.53
+Pressure is 67.9780
+
+Running Castep for lattice constant 4.39
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:40.99
+Pressure is 64.5573
+
+Running Castep for lattice constant 4.40
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:40.91
+Pressure is 60.1877
+
+Running Castep for lattice constant 4.41
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:44.16
+Pressure is 59.2630
+
+Running Castep for lattice constant 4.42
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:41.64
+Pressure is 55.3289
+
+Running Castep for lattice constant 4.43
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:45.91
+Pressure is 52.1226
+
+Running Castep for lattice constant 4.44
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:46.26
+Pressure is 56.0856
+
+Running Castep for lattice constant 4.45
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:47.40
+Pressure is 55.0821
+
+Running Castep for lattice constant 4.46
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:45.98
+Pressure is 53.3613
+
+Running Castep for lattice constant 4.47
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:50.86
+Pressure is 53.3323
+
+Running Castep for lattice constant 4.48
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:51.27
+Pressure is 52.3222
+
+Running Castep for lattice constant 4.49
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:50.93
+Pressure is 51.0851
+
+Running Castep for lattice constant 4.50
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:52.44
+Pressure is 45.9752
+
+Running Castep for lattice constant 4.51
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:55.48
+Pressure is 41.2714
+
+Running Castep for lattice constant 4.52
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:54.88
+Pressure is 33.8657
+
+Running Castep for lattice constant 4.53
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:56.84
+Pressure is 30.4256
+
+Running Castep for lattice constant 4.54
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:57.47
+Pressure is 31.5265
+
+Running Castep for lattice constant 4.55
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:55.81
+Pressure is 28.4194
+
+Running Castep for lattice constant 4.56
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:55.67
+Pressure is 26.0362
+
+Running Castep for lattice constant 4.57
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:55.70
+Pressure is 24.1940
+
+Running Castep for lattice constant 4.58
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:57.61
+Pressure is 24.7035
+
+Running Castep for lattice constant 4.59
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:54.95
+Pressure is 22.2693
+
+Running Castep for lattice constant 4.60
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:57.11
+Pressure is 23.9381
+
+Running Castep for lattice constant 4.61
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:56.07
+Pressure is 17.9610
+
+Running Castep for lattice constant 4.62
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:56.56
+Pressure is 14.2265
+
+Running Castep for lattice constant 4.63
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:56.86
+Pressure is 16.2705
+
+Running Castep for lattice constant 4.64
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:56.41
+Pressure is 14.4740
+
+Running Castep for lattice constant 4.65
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:58.24
+Pressure is 15.8109
+
+Running Castep for lattice constant 4.66
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:55.93
+Pressure is 14.8329
+
+Running Castep for lattice constant 4.67
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:56.54
+Pressure is 14.4318
+
+Running Castep for lattice constant 4.68
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:57.50
+Pressure is 7.4085
+
+Running Castep for lattice constant 4.69
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:57.32
+Pressure is 10.1385
+
+Running Castep for lattice constant 4.70
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:56.72
+Pressure is 8.7292
+
+Running Castep for lattice constant 4.71
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:56.12
+Pressure is 6.2336
+
+Running Castep for lattice constant 4.72
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:57.45
+Pressure is 5.5041
+
+Running Castep for lattice constant 4.73
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:57.34
+Pressure is 1.6109
+
+Running Castep for lattice constant 4.74
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:55.95
+Pressure is -3.4526
+
+Running Castep for lattice constant 4.75
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:57.80
+Pressure is -4.2597
+
+Running Castep for lattice constant 4.76
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:59.60
+Pressure is 0.0611
+
+Running Castep for lattice constant 4.77
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:57.31
+Pressure is -1.0964
+
+Running Castep for lattice constant 4.78
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:59.77
+Pressure is -0.6178
+
+Running Castep for lattice constant 4.79
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:01.18
+Pressure is -2.0902
+
+Running Castep for lattice constant 4.80
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:01.76
+Pressure is -4.0260
+
+Running Castep for lattice constant 4.81
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 0:59.92
+Pressure is -6.6866
+
+Running Castep for lattice constant 4.82
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:00.54
+Pressure is -7.0949
+
+Running Castep for lattice constant 4.83
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:00.94
+Pressure is -7.3725
+
+Running Castep for lattice constant 4.84
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:00.26
+Pressure is -8.5205
+
+Running Castep for lattice constant 4.85
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:00.17
+Pressure is -7.8651
+
+Running Castep for lattice constant 4.86
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:06.93
+Pressure is -11.0934
+
+Running Castep for lattice constant 4.87
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:00.23
+Pressure is -8.5258
+
+Running Castep for lattice constant 4.88
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:00.45
+Pressure is -10.8311
+
+Running Castep for lattice constant 4.89
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:01.07
+Pressure is -10.1855
+
+Running Castep for lattice constant 4.90
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:02.32
+Pressure is -9.2439
+
+Running Castep for lattice constant 4.91
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:00.33
+Pressure is -8.9009
+
+Running Castep for lattice constant 4.92
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:01.27
+Pressure is -8.3021
+
+Running Castep for lattice constant 4.93
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:02.59
+Pressure is -10.4606
+
+Running Castep for lattice constant 4.94
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:03.30
+Pressure is -11.6182
+
+Running Castep for lattice constant 4.95
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:01.09
+Pressure is -11.6266
+
+Running Castep for lattice constant 4.96
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:02.38
+Pressure is -10.1733
+
+Running Castep for lattice constant 4.97
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:03.21
+Pressure is -11.3633
+
+Running Castep for lattice constant 4.98
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:01.78
+Pressure is -10.6615
+
+Running Castep for lattice constant 4.99
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:04.97
+Pressure is -13.7689
+
+Running Castep for lattice constant 5.00
+Program: mpirun -np 1 castep.mpi MgO
+Total time: 1:03.10
+Pressure is -14.4686
+
