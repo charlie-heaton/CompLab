@@ -1,14 +1,29 @@
+!Creates lattice coordinate input file for GENENMM
 program GenLattice
     implicit none
-    character(len=100) :: errormsg
+    character(len=100) :: errormsg,dummy
     
     integer, parameter :: dp = selected_real_kind(15,300), n = 4
     integer :: xcounter = 0, ycounter = 0, zcounter = 0, i, j, out_unit, istat
     
-    real(kind=dp), parameter :: a1 = 4.212, a2 = 2.40 !Lattice constant, a1 for MgO, a2 for CaO
+    real(kind=dp) :: a1,a2 !Lattice constant, a1 for MgO, a2 for CaO
     real(kind=dp), dimension(16*(n**3), 5) :: coordinates ! (Index, xcoordinate, ycoordinate, zcoordinate, atom type)
     real(kind=dp), dimension(3) :: current_coordinates                                                    ! (Atom types: 1 = Mg, 2 = Ca, 3 = O)
     
+    
+    !Input variables through flags
+    IF (getoption('-aMg',.true.,dummy)) THEN
+        read(dummy,*) a1
+    ELSE
+        a1 = 4.212
+    END IF
+    
+    IF (getoption('-aCa',.true.,dummy)) THEN
+        read(dummy,*) a2
+    ELSE
+        a2 = 2.40
+    END IF
+
     i = 1
     current_coordinates = 0.0_dp
     do while (zcounter < n)
@@ -124,4 +139,24 @@ program GenLattice
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   
   
+  !Edit made by Charlie Heaton to allow for flag inputs
+  FUNCTION getoption(flag,getval,cvalue)
+    IMPLICIT NONE
+    CHARACTER(*):: flag,cvalue
+    CHARACTER(160):: arg
+    LOGICAL ::getoption,getval
+    INTEGER :: l,i,j
+    
+    getoption=.false.
+    i=0
+    DO j=1,iargc()
+       CALL getarg(j,arg)
+       IF (arg.eq.flag) i=j
+    END DO
+    IF (i.gt.0) THEN
+       getoption=.true.
+    END IF
+    IF (getval) CALL getarg(i+1,cvalue)
+  END FUNCTION getoption
+
   end program GenLattice
