@@ -105,11 +105,11 @@ program GenLattice
   
   do j = 1, i-1
     if (int(coordinates(j,5)) == 1) then                                                  !This if statement replaces the real number representing the atom type with the text abbreviation
-      write(out_unit,*) int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), " Mg"    
+      write(out_unit,fmt='(I5,3F8.3,A4)') int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), " Mg"    
     else if (int(coordinates(j,5)) == 2) then
-      write(out_unit,*) int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), " Ca" 
+      write(out_unit,fmt='(I5,3F8.3,A4)') int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), " Ca" 
     else if (int(coordinates(j,5)) == 3) then
-      write(out_unit,*) int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), " O"
+      write(out_unit,fmt='(I5,3F8.3,A4)') int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), " O"
     else
       print *, "Error"                                              !If something has gone wrong and the atom is none of the 3 types this is flagged here
     end if

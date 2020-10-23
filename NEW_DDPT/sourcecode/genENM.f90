@@ -180,7 +180,6 @@ PROGRAM genENM
       DO j=1,natom
          IF (i.ne.j) THEN
             jj=3*j-2
-            
             !------------------------------------------------------------------------
             ! Set spring constant to custom between residues if required
             kij=kset
@@ -334,15 +333,7 @@ PROGRAM genENM
    WRITE(6,'(/A)')' Hessian matrix ready.'
    
    WRITE(6,'(A,1PG13.6,A)')' Potential energy:', entot/2, 'kcal mol-1'
- 
-   DO i=1,natom
-      IF (occ(i).lt.1.d0) THEN
-         CALL write_formatted('One or more residues have an occupancy of less than 1,', 'bright red')
-         CALL write_formatted('this often means that the residues have alternative positions,', 'bright red')
-         CALL write_formatted('please check your pdb and re-run if needed.', 'bright red')
-         EXIT
-      END IF
-   END DO
+
  END PROGRAM genENM
  
  FUNCTION RANDOM(ISEED)

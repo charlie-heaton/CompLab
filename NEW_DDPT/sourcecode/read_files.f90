@@ -39,7 +39,8 @@ CONTAINS
     ALLOCATE(x(natom))
     ALLOCATE(y(natom))
     ALLOCATE(z(natom))
-    ALLOCATE(elem(natom))  
+    ALLOCATE(elem(natom)) 
+    ALLOCATE(atnum(natom)) 
     
     ! Read in atom information
     i=0
@@ -54,7 +55,7 @@ CONTAINS
           ! Count number of atoms
        ELSE
              i=i+1
-             READ(lign80,'(3F8.3,A2)') x(i),y(i),z(i),elem(i)
+             READ(lign80,fmt='(I5,3F8.3,A4)') atnum(i),x(i),y(i),z(i),elem(i)
        END IF
     END DO
     
