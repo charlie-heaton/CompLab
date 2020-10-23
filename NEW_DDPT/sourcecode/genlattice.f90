@@ -2,6 +2,7 @@
 program GenLattice
     implicit none
     character(len=100) :: errormsg,dummy
+    character(len=2) :: atom1, atom2
     
     integer, parameter :: dp = selected_real_kind(15,300), n = 4
     integer :: xcounter = 0, ycounter = 0, zcounter = 0, i, j, out_unit, istat
@@ -9,19 +10,30 @@ program GenLattice
     real(kind=dp) :: a1,a2 !Lattice constant, a1 for MgO, a2 for CaO
     real(kind=dp), dimension(16*(n**3), 5) :: coordinates ! (Index, xcoordinate, ycoordinate, zcoordinate, atom type)
     real(kind=dp), dimension(3) :: current_coordinates                                                    ! (Atom types: 1 = Mg, 2 = Ca, 3 = O)
-    
-    
+
     !Input variables through flags
-    IF (getoption('-aMg',.true.,dummy)) THEN
-        read(dummy,*) a1
+    IF (getoption('-type1',.true.,dummy)) THEN
+        read(dummy,*) atom1
     ELSE
-        a1 = 4.212
+        atom1 = "Mg"
     END IF
     
-    IF (getoption('-aCa',.true.,dummy)) THEN
+    IF (getoption('-type2',.true.,dummy)) THEN
+        read(dummy,*) atom2
+    ELSE
+        atom2 = "Ca"
+    END IF
+    
+    IF (getoption('-a1',.true.,dummy)) THEN
+        read(dummy,*) a1
+    ELSE
+        a1 = 4.38_dp
+    END IF
+    
+    IF (getoption('-a2',.true.,dummy)) THEN
         read(dummy,*) a2
     ELSE
-        a2 = 2.40
+        a2 = 4.76_dp
     END IF
 
     i = 1
@@ -105,13 +117,13 @@ program GenLattice
   
   do j = 1, i-1
     if (int(coordinates(j,5)) == 1) then                                                  !This if statement replaces the real number representing the atom type with the text abbreviation
-      write(out_unit,fmt='(I5,3F8.3,A4)') int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), " Mg"    
+      write(out_unit,fmt='(I5,3F8.3,A4)') int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), atom1    
     else if (int(coordinates(j,5)) == 2) then
-      write(out_unit,fmt='(I5,3F8.3,A4)') int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), " Ca" 
+      write(out_unit,fmt='(I5,3F8.3,A4)') int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), atom2 
     else if (int(coordinates(j,5)) == 3) then
       write(out_unit,fmt='(I5,3F8.3,A4)') int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), " O"
     else
-      print *, "Error"                                              !If something has gone wrong and the atom is none of the 3 types this is flagged here
+      print *, "Error"                                              
     end if
   end do
   
