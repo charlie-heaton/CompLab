@@ -1,5 +1,6 @@
 ! Program to calculate the GNM
 ! Tom Rodgers 31 03 2011
+! Edited by Charlie Heaton 23/10/2020 to allow for an edited input file
 PROGRAM GNM
   USE nrtype
   USE utils
@@ -45,8 +46,7 @@ PROGRAM GNM
   
 
 
-  CALL read_pdb(filename,hetatm,natom,atom,atnum,name,res,chain,resnum,x,y,z, &
-                  occ,bfac,elem,chag)
+  CALL read_pdb(filename,natom,atnum,x,y,z,elem)
 
   j=0
   DO i=1,natom

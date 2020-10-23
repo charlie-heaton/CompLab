@@ -7,12 +7,12 @@ PROGRAM genENM
    IMPLICIT NONE
    LOGICAL :: getoption, hetatm, caonly, resmass, atmass, cutvect,cutassign, &
         forceres,ukn,usesec,qexist,lig1,firstat, custb, dna, hin, is_numeric
-   CHARACTER :: dummy*120, pdbfile*120, lign80*80, nomatm*120, res2*4, chain2*1, nomres*120, &
+   CHARACTER :: dummy*120, inputfile*120, lign80*80, nomatm*120, res2*4, chain2*1, nomres*120, &
         foutname*120,custbfile*120
    INTEGER :: natom, io, i, j, natomold, nident, ncusres,ii,ijjjj,iseed,jat,jj, &
         ll,nntr,nnzero,nhel,nshe,k,l,fat,cbs,cbnum,nseconds,counter_1,counter_2,counter_3,counter_4
    REAL(DP) :: cutoff, cutoffdef, rave, rdev, rmin, rmax,anmp,ddf,rkh,dist,dist2,dmax,dmin, &
-        distave,drms,kij,kset,shift,rx,ry,rz,trace,random,masstol,xav,yav,zav,bfacav,entot, forcing_coef
+        distave,drms,kij,kset,shift,rx,ry,rz,trace,random,masstol,xav,yav,zav,bfacav,entot, forcing_coef,ACa,AMg,RhoCa,RhoMg
    LOGICAL,ALLOCATABLE,DIMENSION(:) :: otherres, otherchain
    INTEGER,ALLOCATABLE,DIMENSION(:) :: atnum,resnum,resnumold, resone, restwo
    REAL(DP),ALLOCATABLE,DIMENSION(:) :: x,y,z,occ,bfac,vals,mass,massold,cutvalue, &
@@ -34,7 +34,7 @@ PROGRAM genENM
  ! Read in options
  
    IF (.not.getoption('-i',.true.,inputfile)) THEN
-      WRITE(0,'(A)') "Need to input a pdb file with -pdb"
+      WRITE(0,'(A)') "Need to input an input file with -i"
       CALL helptext(0)
       CALL exit(0)
    END IF
@@ -102,9 +102,9 @@ PROGRAM genENM
  
  !------------------------------------------------------------------------------------
  ! Read in pdb file
-   CALL read_pdb(pdbfile,natom,x,y,z,elem)
+   CALL read_pdb(inputfile,natom,atnum,x,y,z,elem)
  
-   WRITE(6,'(A,I5,A)') "Read in pdbfile, found", natom, " atoms"
+   WRITE(6,'(A,I5,A)') "Read in Inputfile, found", natom, " atoms"
  ! End of reading in pdb file
  !----------------------------------------------------------------------------------------- 
  
@@ -160,6 +160,14 @@ PROGRAM genENM
    nntr=0
    ll=0
    entot=0.d0
+   !  Allocate born- mayer parameters for CaO and MgO (as calculated in Catlow and Lewis 1985). MgO value for A is for 
+   !  when MgO is in an octahedral lattice. The rho values are in Angstrom.
+   
+   ACa   = 129228203.2
+   AMg   = 75324368.0
+   RhoCa = 0.3372
+   RhoMg = 0.3242
+
       DO i=1,natom
       ii=3*i-2
  
@@ -202,6 +210,22 @@ PROGRAM genENM
             ! Adjust spring constant for anisotropic network model
             ELSEIF (anmp.gt.0.d0) THEN
                kij=kij/(dist**anmp)
+            END IF
+            !  Allow for different 'spring' constants for different sets of cation anion pairs. 
+            !  The paramters used in the born mayer potentials were found by 
+            !  Lewis and Catlow in G V Lewis and C R A Catlow 1985 J. Phys. C: Solid State Phys. 18 1149 
+            !  The coefficent to the exponential has been converted from eV to Joules to fit with units used in
+            !  DDPT.  
+            IF (dist .le. 6) THEN
+
+               IF ((elem(i) == 'O' .and. elem(j) == 'Mg') .or. (elem(i) == 'Mg' .and. elem(j) == 'O')) THEN
+                  kij = AMg*dexp(-dist/RhoMg)
+               END IF
+               IF ((elem(i) == 'O' .and. elem(j) == 'Ca') .or. (elem(i) == 'O' .and. elem(j) == 'Ca')) THEN
+                  kij = ACa*dexp((-dist)/RhoCa)
+               END IF
+            ELSE 
+                  kij=kij
             END IF
 
             !--------------------------------------------------------------------------
@@ -292,7 +316,7 @@ PROGRAM genENM
    
    CLOSE(9432)
    
-   WRITE(7432,'(2A)') 'mol load pdb ',pdbfile
+   WRITE(7432,'(2A)') 'mol load pdb ',inputfile
    CLOSE(7432)
    
    WRITE(6,'(/A,F8.4,A)')' The matrix is ', 100.d0*dfloat(nnzero)/dfloat(3*natom*(3*natom+1)/2),' % Filled.'

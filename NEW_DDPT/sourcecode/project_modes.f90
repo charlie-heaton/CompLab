@@ -53,8 +53,7 @@ PROGRAM project_modes
      hetatm=.false.
   END IF 
 
-  CALL read_pdb(pdbfile,hetatm,natom,atom,atnum,name,res,chain,resnum,x,y,z, &
-       occ,bfac,elem,chag) 
+  CALL read_pdb(pdbfile,natom,atnum,x,y,z,elem) 
 
   CALL read_eigenfacs(filename,natom,startvec,endvec,3,eigenval,eigenvec,num)
 

@@ -44,8 +44,7 @@ PROGRAM spacing
      lig1=.false.
   END IF 
 
-  CALL read_pdb(pdbfile,hetatm,natom,atom,atnum,name,res,chain,resnum,x,y,z, &
-       occ,bfac,elem,chag)
+  CALL read_pdb(pdbfile,natom,atnum,x,y,z,elem)
 
   IF (caonly) THEN
      firstat=.true.

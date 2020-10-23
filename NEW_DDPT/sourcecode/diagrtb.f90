@@ -2,7 +2,7 @@ PROGRAM diagrtb
   USE nrutil
   USE read_files
   USE utils
-  USE rtb_util
+  !USE rtb_util   DIAGRTB is not used in this edition of DDPT. DIAGRTB has been commented out to help compilation run smoothly with the edited input files. 
   IMPLICIT NONE
   INTEGER :: nbrt    
   CHARACTER :: cformat*12, cstatus*12, feig*120, &
@@ -144,9 +144,8 @@ PROGRAM diagrtb
      fidet=.false.
   END IF
 
-! Read in values from pdb file
-  CALL read_pdb(fpdb,hetatm,natom,atom,atnum,name,res,chain,resnum,x,y,z, &
-                  occ,bfac,elem,chag)
+! Read in values from pdb file  inputfile,natom,atnum,x,y,z,elem
+  CALL read_pdb(fpdb,natom,atnum,x,y,z,elem)
   DEALLOCATE(atom)
   DEALLOCATE(atnum)
   DEALLOCATE(name)
@@ -155,7 +154,7 @@ PROGRAM diagrtb
   DEALLOCATE(chag) 
 
 ! Find blocks from pdb structure
-  CALL BLOCPDB(fpdb, sstr, nrbl, resnum, blength, chain, natblocs, natom, nb, hetatm)
+  !CALL BLOCPDB(fpdb, sstr, nrbl, resnum, blength, chain, natblocs, natom, nb, hetatm)
   DEALLOCATE(resnum)
   DEALLOCATE(chain)
 
@@ -205,12 +204,12 @@ PROGRAM diagrtb
   END IF
 
 ! Read in the matrix  
-  CALL PREPMAT(fmtx, natblocs, natom, nb, blength)
+  !CALL PREPMAT(fmtx, natblocs, natom, nb, blength)
 
   DEALLOCATE(blength)
 
 ! Translate into rotational translational blocks  
-  CALL RTB(natom, nb, nbrt, 3*natblocs, (3*natblocs)**2,corlin,mass)
+  !CALL RTB(natom, nb, nbrt, 3*natblocs, (3*natblocs)**2,corlin,mass)
 
   DEALLOCATE(corlin)
   DEALLOCATE(mass)
@@ -219,7 +218,7 @@ PROGRAM diagrtb
   CALL DIAGSTD (ndim, nvec, covar, mat, fidet)
 
 ! Translate back to atomistic  
-  CALL RTBTOMODES (natom, nb, nbrt, 3*natblocs, nvec, feig)
+  !CALL RTBTOMODES (natom, nb, nbrt, 3*natblocs, nvec, feig)
 
 ! Remove temporary files
   OPEN(10,file='diagrtb_work.blocs')
@@ -354,7 +353,7 @@ SUBROUTINE DIAGSTD(ndim,nvecout,covar,mat,fidet)
      DO i=1,nord
         DO j=i,nord
            IF (amat(i,j).ne.0) THEN
-              WRITE(7354,'(2I10,1PG20.12)'), i, j, amat(i,j)
+              WRITE(7354,'(2I10,1PG20.12)') i, j, amat(i,j)
            END IF
         END DO
      END DO 

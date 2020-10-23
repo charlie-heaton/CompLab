@@ -101,8 +101,7 @@ PROGRAM cross_cor
         resnum(i)=i
      END DO
   ELSE
-     CALL read_pdb(pdbfile,hetatm,natom,atom,atnum,name,res,chain,resnum,x,y,z, &
-          occ,bfac,elem,chag) 
+     CALL read_pdb(pdbfile,natom,atnum,x,y,z,elem) 
   END IF
   
 !!$  OPEN(file=pdbfile,form="FORMATTED",status="OLD",unit=2356)

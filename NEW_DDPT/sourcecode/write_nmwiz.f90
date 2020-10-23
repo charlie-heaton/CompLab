@@ -56,8 +56,7 @@ PROGRAM write_nmwiz
   ! Open the bfactors file
   OPEN(file=bfacfile,form="FORMATTED",status="OLD",unit=4541)
   
-  CALL read_pdb(filename,hetatm,natom,atomname,atnum,name,resName,chainID,resSeq,x,y,z, &
-       occ,bfactor,elem,chag)
+  CALL read_pdb(filename,natom,atnum,x,y,z,elem)
    
   ! Write out autoload header
   WRITE(4540, '(A20)') 'nmwiz_load nmwiz.nmd'

@@ -6,17 +6,17 @@ MODULE read_files
 !
 CONTAINS
 ! Read pdb files
-  SUBROUTINE read_pdb(file,natom,atom,atnum,name,x,y,z,elem,chag)
+  SUBROUTINE read_pdb(inputfile,natom,atnum,x,y,z,elem)
     USE nrtype
     IMPLICIT NONE
-    INTEGER, ALLOCATABLE,DIMENSION(:) :: atnum,resnum
-    REAL(DP), ALLOCATABLE,DIMENSION(:) ::x,y,z,occ,bfac
+    INTEGER, ALLOCATABLE,DIMENSION(:) :: atnum
+    REAL(DP), ALLOCATABLE,DIMENSION(:) ::x,y,z
     CHARACTER, ALLOCATABLE, DIMENSION(:) :: atom*6,name*4,res*3,chain*1,elem*2,chag*2
     INTEGER :: io, i, natom
-    CHARACTER :: file*120, lign80*80
+    CHARACTER :: inputfile*120, lign80*80
     
     ! Find number of atoms
-    OPEN(file=pdbfile,form="FORMATTED",status="OLD",unit=2356)
+    OPEN(file=inputfile,form="FORMATTED",status="OLD",unit=2356)
     i=0
     DO
        READ(2356,'(A)',IOSTAT=io) lign80
@@ -28,10 +28,7 @@ CONTAINS
           EXIT
           ! Count number of atoms
        ELSE
-          IF ((lign80(1:4).eq.'ATOM').or. &
-               ((lign80(1:6).eq.'HETATM').and.hetatm)) THEN
-             i=i+1
-          END IF
+         i=i+1
        END IF
     END DO
     

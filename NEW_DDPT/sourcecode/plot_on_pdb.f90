@@ -47,8 +47,7 @@ PROGRAM plot_on_pdb
   END IF
 
 
-  CALL read_pdb(pdbfile,hetatm,natom,atom,atnum,name,res,chain,resnum,x,y,z, &
-                  occ,bfac,elem,chag)
+  CALL read_pdb(pdbfile,natom,atnum,x,y,z,elem)
 
 
   OPEN(file=listfile,form="FORMATTED",status="OLD",unit=2357)

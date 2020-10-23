@@ -63,8 +63,7 @@ PROGRAM map
      cutoff=8.d0
   END IF 
 
-  CALL read_pdb(pdbfile,hetatm,natom,atom,atnum,name,res,chain,resnum,x,y,z, &
-       occ,bfac,elem,chag)
+  CALL read_pdb(pdbfile,natom,atnum,x,y,z,elem)
 
   ALLOCATE(coor(3*natom))
   DO i=1,natom
