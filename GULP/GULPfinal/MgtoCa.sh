@@ -9,6 +9,6 @@ do
     echo $i> MgOtoCa.in
     rm MgOtoCa.dat
     ./a.out < MgOtoCa.in 
-    mv MgOtoCa.dat MgOtoCa_${i}Ca.out
+    mv MgOtoCa.dat MgO_${i}Ca.gin
 
 done
