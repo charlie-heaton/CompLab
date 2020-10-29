@@ -36,8 +36,8 @@ do j=1,p
     read(12,'(A)') line 
    if (line(5:6) == Mg) then    !Atom type is always in columns 5 and 6 of MgO.gin
         k = k + 1               !Counts amount of Mg atoms read
-        if ((4-i)<=k) then      !Only 4 core atoms so want '4-i' Mg atoms total
-            line(5:6) = 'Ca'    
+        if ((5-i)<=k) then      !Only 4 core atoms so want '5-i' Mg atoms total
+            line(5:6) = 'Ca'
         end if
     end if
     write(13,'(A)') line
@@ -56,7 +56,7 @@ do j=1,p
     read(12,'(A)') line 
    if (line(5:6) == Mg) then
         k = k + 1
-        if ((4-i)<=k) then
+        if ((5-i)<=k) then
             line(5:6) = 'Ca'
         end if
     end if
