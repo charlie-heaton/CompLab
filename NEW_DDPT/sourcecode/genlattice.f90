@@ -1,11 +1,11 @@
 !Creates lattice coordinate input file for GENENMM
 program GenLattice
     implicit none
-    character(len=100) :: errormsg,dummy
+    character(len=100) :: errormsg,dummy,swapfile
     character(len=2) :: atom1, atom2
     
     integer, parameter :: dp = selected_real_kind(15,300), n = 4
-    integer :: xcounter = 0, ycounter = 0, zcounter = 0, i, j, out_unit, istat
+    integer :: xcounter = 0, ycounter = 0, zcounter = 0, i, j, out_unit, out_unit2, istat
     
     real(kind=dp) :: a1,a2 !Lattice constant, a1 for MgO, a2 for CaO
     real(kind=dp), dimension(16*(n**3), 5) :: coordinates ! (Index, xcoordinate, ycoordinate, zcoordinate, atom type)
@@ -35,6 +35,8 @@ program GenLattice
     ELSE
         a2 = 4.76_dp
     END IF
+    
+    
 
     i = 1
     current_coordinates = 0.0_dp
@@ -105,7 +107,14 @@ program GenLattice
       ycounter = 0
     end do
     
-    
+  IF (getoption('-swaps',.true.,dummy)) THEN
+    read(dummy,*) swapfile
+    call swaps(swapfile)
+  END IF
+  
+  
+  
+
     
     
   
@@ -113,13 +122,12 @@ program GenLattice
         
   out_unit = 30
   open(file="input.pdb", unit = out_unit, status = "replace", iostat = istat, iomsg = errormsg)
-  if (istat /= 0) print *, errormsg    
-  
+  if (istat /= 0) print *, errormsg      
   do j = 1, i-1
     if (int(coordinates(j,5)) == 1) then                                                  !This if statement replaces the real number representing the atom type with the text abbreviation
-      write(out_unit,fmt='(I5,3F8.3,A4)') int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), atom1    
+      write(out_unit,fmt='(I5,3F8.3,A4)') int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), atom1
     else if (int(coordinates(j,5)) == 2) then
-      write(out_unit,fmt='(I5,3F8.3,A4)') int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), atom2 
+      write(out_unit,fmt='(I5,3F8.3,A4)') int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), atom2
     else if (int(coordinates(j,5)) == 3) then
       write(out_unit,fmt='(I5,3F8.3,A4)') int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), " O"
     else
@@ -127,9 +135,8 @@ program GenLattice
     end if
   end do
   
-  
-  contains 
-  
+   
+  contains  
   
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   
@@ -147,7 +154,27 @@ program GenLattice
   end subroutine savecoordinates
   
   
-  
+  subroutine swaps(swapfile)
+    character(len=100) :: swapfile
+    integer :: index1, index2, out_unit, i
+    real(kind=dp), dimension(3) :: temp
+    out_unit = 40
+    open(file=swapfile, unit=out_unit, status = "old", iostat = istat, iomsg = errormsg)
+    do i = 1, 10000000
+      read(out_unit,*) index1, index2
+      print *, coordinates(index1,:)
+      temp(1) = coordinates(index1,2)
+      temp(2) = coordinates(index1,3)
+      temp(3) = coordinates(index1,4)
+      coordinates(index1,2) = coordinates(index2,2)
+      coordinates(index1,3) = coordinates(index2,3)
+      coordinates(index1,4) = coordinates(index2,4)
+      coordinates(index2,2) = temp(1)
+      coordinates(index2,3) = temp(2)
+      coordinates(index2,4) = temp(3)
+      
+    
+  end subroutine
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   
   
