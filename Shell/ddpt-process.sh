@@ -3,11 +3,13 @@
 #Runs several DDPT programs on a input file generated from the GENLATTICE program.
 
 #Path Variables
-DDPT  =  NEW_DDPT
-BIN   =  $NEW_DDPT/bin
-PLOT  =  $NEW_DDPT/plot
+HOME=$PWD
+DDPT=$PWD/NEW_DDPT
+BIN=$DDPT/bin
+PLOT=$DDPT/plot
 
-echo Running DDPT for Ca Mg Oxide Mixing Project at $date >> log
+echo Running DDPT for Ca Mg Oxide Mixing Project >> log
+echo -e '\t'`hostname` at `date`>> log
 #Generate the input file
 \time --output=log --append -f "Program: %C\nTotal time: %E" $BIN/GENLATTICE -aMg 4.380 -aCa 4.760
 #Generate the network model using GENENMM (Edited for an anisotropic network model)
@@ -25,6 +27,7 @@ echo Running DDPT for Ca Mg Oxide Mixing Project at $date >> log
 \time --output=log --append -f "Program: %C\nTotal time: %E" python $PLOT/plot_dist_cross.py 
 #Calculate the mode energy for a mode summation of 30 modes.
 awk 'NR>1 {print $4}' mode.energy >> energy_30
-Free_Energy = awk '{sum+=$1} END {print sum}' energy_30
-echo The free energy of the configuration is $Energy >> log
-echo The free energy of the configuration is $Energy
+echo $(sed 's/$/+/' energy_30) 0 | bc >> energy_sum
+echo The free energy of the configuration is $(sed 's/$/+/' energy_30) 0 | bc >> log
+echo The free energy of the configuration is $(sed 's/$/+/' energy_30) 0 | bc
+rm matrix.* mode.* 
