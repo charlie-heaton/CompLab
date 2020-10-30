@@ -5,7 +5,7 @@ program GenLattice
     character(len=2) :: atom1, atom2
     
     integer, parameter :: dp = selected_real_kind(15,300), n = 4
-    integer :: xcounter = 0, ycounter = 0, zcounter = 0, i, j, out_unit, out_unit2, istat
+    integer :: xcounter = 0, ycounter = 0, zcounter = 0, i, j, out_unit, istat
     
     real(kind=dp) :: a1,a2 !Lattice constant, a1 for MgO, a2 for CaO
     real(kind=dp), dimension(16*(n**3), 5) :: coordinates ! (Index, xcoordinate, ycoordinate, zcoordinate, atom type)
@@ -109,6 +109,7 @@ program GenLattice
     
   IF (getoption('-swaps',.true.,dummy)) THEN
     read(dummy,*) swapfile
+    print *, swapfile
     call swaps(swapfile)
   END IF
   
@@ -161,8 +162,11 @@ program GenLattice
     out_unit = 40
     open(file=swapfile, unit=out_unit, status = "old", iostat = istat, iomsg = errormsg)
     do i = 1, 10000000
-      read(out_unit,*) index1, index2
-      print *, coordinates(index1,:)
+      read(out_unit,*, end=800) index1, index2
+      if (istat < 0) then
+        exit
+      end if
+      print *, index1, index2
       temp(1) = coordinates(index1,2)
       temp(2) = coordinates(index1,3)
       temp(3) = coordinates(index1,4)
@@ -172,8 +176,8 @@ program GenLattice
       coordinates(index2,2) = temp(1)
       coordinates(index2,3) = temp(2)
       coordinates(index2,4) = temp(3)
-      
-    
+    end do  
+  800 continue  
   end subroutine
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   
