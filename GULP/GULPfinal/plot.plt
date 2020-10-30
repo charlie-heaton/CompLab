@@ -1,10 +1,12 @@
-set term png
-set title "Lattice energy of MgO and CaO mixture"
+set term postscript eps enhanced color font "Helvetica" 18
 set nokey
 set grid
-set xlabel "Ratio of Ca to Mg"
-set xtic(0,0.25,0.5,0.75,1)
+set size 0.8, 0.8
+set size ratio 0.7
+set xlabel "Number of Ca atoms"
+set xtic(0,1,2,3,4)
+set mytics 5
 set ylabel "Lattice Energy (eV)"
-set output 'graphenergies.png'
+set output 'graphenergies.eps'      
 m="energies.dat"
-plot m using 1:2 with linespoints
+p m u 1:2 w lp

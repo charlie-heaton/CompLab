@@ -1,0 +1,57 @@
+opti isotropic conp  # optimise cell vectors, but keep cubic (isotropic)
+vectors
+    4.2000000000    0.0000000000    0.0000000000
+    0.0000000000    4.2000000000    0.0000000000
+    0.0000000000    0.0000000000    4.2000000000
+
+# define where the atoms are, in fractional coordinates
+
+fractional           # alternatively, can use "cartesian" and give positions in angstroms
+     O  core   0.5000000000    0.5000000000    0.5000000000 
+     O  core   0.5000000000    0.0000000000    0.0000000000 
+     O  core   0.0000000000    0.5000000000    0.0000000000 
+     O  core   0.0000000000    0.0000000000    0.5000000000 
+    
+    Mg  core   0.0000000000    0.0000000000    0.0000000000 
+    Mg  core   0.0000000000    0.5000000000    0.5000000000 
+    Mg  core   0.5000000000    0.0000000000    0.5000000000 
+    Mg  core   0.5000000000    0.5000000000    0.0000000000 
+   
+    Mg  shell  0.0000000000    0.0000000000    0.0000000000 
+    Mg  shell  0.0000000000    0.5000000000    0.5000000000 
+    Mg  shell  0.5000000000    0.0000000000    0.5000000000 
+    Mg  shell  0.5000000000    0.5000000000    0.0000000000 
+     
+     O  shell  0.5000000000    0.5000000000    0.5000000000 
+     O  shell  0.5000000000    0.0000000000    0.0000000000 
+     O  shell  0.0000000000    0.5000000000    0.0000000000 
+     O  shell  0.0000000000    0.0000000000    0.5000000000 
+    
+# If you put Ca in, you need to know the parameters -- so here they are:
+#Ca    core   0.000000   4.235384   2.117692   0.719000   1.000000   0.000000
+#Ca    shel   0.000000   4.235384   2.117692   0.719000   1.000000   0.000000
+
+# Now define the parameters for the core-shell model & the different chemical species (elements)
+species
+Mg core   1.580000 #specify the core and shell charges (found from literature)
+Mg shel   0.420000
+Ca core   0.719000
+Ca shel   1.281000
+O core   0.513000
+O shel  -2.513000
+
+# Now define the interatomic potential -- we're using a Buckingham potential here
+buck
+Mg shel O shel     2457.242920   0.261000   0.000000   0.000000  10.000000 #buckingham potential parameters, also found from literature
+ buck
+Ca shel O shel     2272.740967   0.298600   0.000000   0.000000  10.000000
+ buck
+O shel O shel       25.410000   0.693700  32.320000   0.000000  12.000000
+ spring
+Mg 349.950012  # spring constants, found from literature
+Ca  34.049999
+O  20.530001
+
+# Set some optional parameters
+dump every 5 MgCaOO.grs # writes data every 5 steps, in case you have to restart
+switch rfo gnorm 0.01   # switches optimisation method when almost at the ground state, to further increase the efficancy of the code
