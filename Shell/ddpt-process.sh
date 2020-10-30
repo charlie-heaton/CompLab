@@ -11,7 +11,7 @@ PLOT=$DDPT/plot
 echo Running DDPT for Ca Mg Oxide Mixing Project >> log
 echo -e '\t'`hostname` at `date`>> log
 #Generate the input file
-\time --output=log --append -f "Program: %C\nTotal time: %E" $BIN/GENLATTICE -aMg 4.380 -aCa 4.760
+\time --output=log --append -f "Program: %C\nTotal time: %E" $BIN/GENLATTICE -a1 4.380 -a2 4.760 -type1 Mg -type2 Ca 
 #Generate the network model using GENENMM (Edited for an anisotropic network model)
 \time --output=log --append -f "Program: %C\nTotal time: %E" $BIN/GENENMM -i input.pdb -mass -c 6
 #Diagonalise the hessian matrix
