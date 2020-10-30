@@ -166,7 +166,9 @@ program GenLattice
       if (istat < 0) then
         exit
       end if
-      print *, index1, index2
+      if ((coordinates(index1,5) == 3) .or. (coordinates(index2,5) == 3)) then
+        cycle
+      end if
       temp(1) = coordinates(index1,2)
       temp(2) = coordinates(index1,3)
       temp(3) = coordinates(index1,4)
