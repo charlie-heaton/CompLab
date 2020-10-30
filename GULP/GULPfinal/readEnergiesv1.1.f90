@@ -1,3 +1,21 @@
+function getEnergy(unit) result(energy)
+integer, intent(in) :: unit
+integer :: i
+character(len=51) :: temporary, energyCharacter
+integer, parameter :: dp = selected_real_kind(15,300)
+real(kind=dp) :: energy
+
+do i= 1, 162
+ read(unit, '(A)' ) temporary
+end do
+read(unit, '(A)' ) energyCharacter
+read(energyCharacter(39:51), *) energy
+
+end function
+
+
+
+
 program readEnergies
 implicit none
 integer :: istat, j, istat2, istat3
@@ -41,6 +59,6 @@ if (istat3.ne.0) then
  print *, 'Error writing to file'
 end if
 
-call execute_command_line('gnuplot -p plot.plt')
+call execute_command_line('gnuplot -p plot.plt')        
 
 end program
