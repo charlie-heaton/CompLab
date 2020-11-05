@@ -5,7 +5,7 @@ program GenLattice
     character(len=2) :: atom1, atom2
     
     integer, parameter :: dp = selected_real_kind(15,300), n = 4
-    integer :: xcounter = 0, ycounter = 0, zcounter = 0, i, j, out_unit, istat
+    integer :: xcounter = 0, ycounter = 0, zcounter = 0, i, j, out_unit, out_unit2, istat
     
     real(kind=dp) :: a1,a2 !Lattice constant, a1 for MgO, a2 for CaO
     real(kind=dp), dimension(16*(n**3), 5) :: coordinates ! (Index, xcoordinate, ycoordinate, zcoordinate, atom type)
@@ -122,13 +122,18 @@ program GenLattice
   !The if statement is used to convert integer atom type into the atom abbreviation
         
   out_unit = 30
+  out_unit2 = 60
   open(file="input.pdb", unit = out_unit, status = "replace", iostat = istat, iomsg = errormsg)
-  if (istat /= 0) print *, errormsg      
+  if (istat /= 0) print *, errormsg 
+  open(file="targetswaps.pdb", unit = out_unit2, status = "replace", iostat = istat, iomsg = errormsg)
+  if (istat /= 0) print *, errormsg
   do j = 1, i-1
-    if (int(coordinates(j,5)) == 1) then                                                  !This if statement replaces the real number representing the atom type with the text abbreviation
+    if (int(coordinates(j,5)) == 1) then !This if statement replaces the real number representing the atom                                  type with the text abbreviation
       write(out_unit,fmt='(I5,3F8.3,A4)') int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), atom1
+      write(out_unit2,fmt='(I5,3F8.3,A4)') int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), atom1
     else if (int(coordinates(j,5)) == 2) then
       write(out_unit,fmt='(I5,3F8.3,A4)') int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), atom2
+      write(out_unit2,fmt='(I5,3F8.3,A4)') int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), atom2
     else if (int(coordinates(j,5)) == 3) then
       write(out_unit,fmt='(I5,3F8.3,A4)') int(coordinates(j,1)), coordinates(j,2), coordinates(j,3), coordinates(j,4), " O"
     else
@@ -187,7 +192,7 @@ program GenLattice
     CHARACTER(*):: flag,cvalue
     CHARACTER(160):: arg
     LOGICAL ::getoption,getval
-    INTEGER :: l,i,j
+    INTEGER :: i,j
     
     getoption=.false.
     i=0

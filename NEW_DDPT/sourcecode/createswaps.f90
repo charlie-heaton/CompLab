@@ -31,14 +31,13 @@ program createswapfile
   call random_number(uniformarray)
   uniformarrayint = int(uniformarray * lines3,k15)
   do i = 1, lines2
-    print *, uniformarrayint(i)
     swaps(i,1) = targets(uniformarrayint(i)+1)
   end do
   do i = 1, lines2
     swaps(i,2) = targets(uniformarrayint(i)+lines3)
   end do
   out_unit = 60
-  open(file= "swappairs.txt",unit=out_unit, action = "write", status = "new")
+  open(file= "swappairs.txt",unit=out_unit, action = "write", status = "replace")
   do i = 1, lines2
     write(60,*) swaps(i,1), swaps(i,2)
   end do
