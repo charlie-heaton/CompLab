@@ -8,7 +8,7 @@ do
     rm -f MgtoCa.in
     echo $i> MgOtoCa.in
     rm MgOtoCa.dat
-    ./MgOtoCa < MgOtoCa.in 
+    ./MgtoCa < MgOtoCa.in 
     mv MgOtoCa.dat MgO_${i}Ca.gin
 
 done

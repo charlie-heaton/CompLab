@@ -7,4 +7,4 @@ $filepath ./MgO_1Ca
 $filepath ./MgO_2Ca
 $filepath ./MgO_3Ca
 $filepath ./MgO_4Ca
-./readEnergiesv1.1
+./readEnergiesv1.21
