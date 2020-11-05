@@ -1,6 +1,7 @@
 #!/bin/bash
 #Usage ./ddpt-process-parallel.sh 2 big_swap_file
 #Runs several DDPT programs on a input file generated from the GENLATTICE program. Edited version of ddpt-process.sh to be run on physlog
+#Run the CREATESWAP program first to create the bigswapfile.
 
 #Path Variables
 HOME=$PWD
