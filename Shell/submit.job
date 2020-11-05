@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Specify some options for QSUB
+#$ -V -j y -R y
+
+# Specify which queue
+#$ -q phys-lab
+
+# Execute script from current working directory
+#$ -cwd
+
+# Select max run-time (3 hours)
+#$ -l h_rt=03:00:00
+
+#$ -t 1-128 -tc 12
+echo "Task ID is $SGE_TASK_ID"
+
+HOME=$PWD
+#$ -o $HOME/logs
+#$ -e $HOME/logs
+
+# Load the FORTRAN and Python (Miniconda) modules
+module load lang/Miniconda3 
+module load toolchain/foss/2018a
+
+#set job running
+./ddpt-process-parallel.sh $SGE_TASK_ID big_swap_file 
