@@ -14,7 +14,7 @@ input when prompted.
 
 To use this program, move to the directory /GULPfinal in terminal and
 run the bash script executable.sh using ./executable.sh. The main output
-should be a graph called 'graphenergies.png'
+should be a graph called 'graphenergies.eps'
 
 This script will modify the base input file MgO.gin included in this repository
 to various ratios of MgO to CaO, saving them as different input files.
