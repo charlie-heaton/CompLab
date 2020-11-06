@@ -1,6 +1,7 @@
 import os,sys, math, numpy as np, itertools
 from matplotlib.patches import Patch
 import matplotlib.pyplot as plt
+plt.switch_backend('agg')
 from pylab import *
 from numpy import ma
 
@@ -40,11 +41,11 @@ for x in range(1,len(sys.argv)):
 		ttl = sys.argv[x+1]
 		
 	if sys.argv[x]=='-help':
-		print '\n\nProgram to plot overlap data...\n\nOPTIONS:\n'\
+		print ('\n\nProgram to plot overlap data...\n\nOPTIONS:\n'\
 		'-i = Name of input file (Default=overlap.dat)\n'\
 		'-xlabel = Label for x axis (Default=mode i)\n'\
 		'-ylabel = Label for y axis (Default=mode j)\n'\
-		'-title = Title for plot\n'
+		'-title = Title for plot\n')
 		exit()
 		
 inlines=open(infile,'r').readlines()
@@ -136,9 +137,9 @@ fig.text(.70, .9, 'Cross \n correlation', horizontalalignment='center')
 plt.rcParams.update({'font.size': 22})
 
 plt.savefig(outname+'.png',format='png')
-plt.show()
+
 
 #-------------------------------------------------------------------
 
-print 'DONE'
+print ('DONE')
 
