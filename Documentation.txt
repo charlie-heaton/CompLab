@@ -1,0 +1,29 @@
+Documentation
+---------------------------------------------------------------------------------------------------------------------------------------------
+genlattice.f90
+Written by Jake Cardwell and Charlie Heaton
+
+This program was designed to generate a simulation of a boundary between two crystal lattices. The lattice is generated in a .pdb format designed to be used by the NEW-DDPT program, for the purposes of analysing the mixing of crystal structures.
+
+Flags : gen.o [-help] [-type1 atom1] [-type2 atom2] [-a1 a1] [-a2 a2] [-swaps swapfile]
+
+-help : will print out the help text for this program on the screen
+
+-type1, -type2 : will allow the user to designate a different two letter abbreviation for the atoms in the crystal structure. If the user does not define, Mg and Ca will be used by default
+
+-a1, -a2 : will allow the user to designate different lattice constants for the two crystal lattices. If the user does not define, the lattice constants (a1 = 4.38 Angstroms) and (a2 = 4.76 Angstroms) will be used by default
+    
+-swaps : will allow the user to define if they want the swapping function to be used. If the flag is not used, the program generates the default lattice. If the swapping flag is used, the program reads the input file for pairs of atoms to swap
+
+Usage notes:
+- To edit the size of the lattice structures, edit the integer parameter n. Note that n is the number of the unit cells of the crystal stretching across one dimension. As there are 8 atoms per unit cell in both crystals, note that the number of atoms scales as 16n^3
+- The code does not accomodate for how the lattice constants would individually change within the unit cells with different mixtures of atom types 1 and 2.
+- genlattice.f90 will produce 2 output files, "input.pdb" and "targetswaps.pdb". Input.pdb is a NEW-DDPT ready input file with a list of every atom present in the two lattices, and a set of coordinates for each atom, as well as an index for each atom. Targetswaps.pdb contains the same list but with the oxygen atoms removed, so that the separate program createswaps.f90 can create a list of target atoms to be swapped.
+---------------------------------------------------------------------------------------------------------------------------------------------
+createswaps.f90
+Written by Jake Cardwell and Charlie Heaton
+
+This program was designed to take a .pdb file consisting of a list of atoms, and randomly generate swaps between the two different types of atoms, and then output the list of pairs to a text file to be read by the genlattice.f90 program if the -swaps flag is activated. 
+Usage notes:
+- For the program to be run successfully, a file named "targetswaps.pdb" needs to be present in the same directory. If the genlattice.f90 executable has been run then this file should be present. 
+- This program will create a file called "swappairs.txt". This is the file that should follow the -swaps flag in the genlattice executable statement.

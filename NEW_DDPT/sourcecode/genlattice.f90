@@ -12,6 +12,10 @@ program GenLattice
     real(kind=dp), dimension(3) :: current_coordinates                                                    ! (Atom types: 1 = Mg, 2 = Ca, 3 = O)
 
     !Input variables through flags
+    IF (getoption('-help',.true.,dummy)) THEN
+      call help()
+    END IF
+    
     IF (getoption('-type1',.true.,dummy)) THEN     !These if constructs check for flag inputs, and store 
         read(dummy,*) atom1                        !them in variables. The default use of this program
     ELSE                                           !is for Mg and Ca, but inputting other atom names will
@@ -144,8 +148,34 @@ program GenLattice
    
   contains  
   
-  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  
+  subroutine help()
+    print *,"              genlattice.f90                  "
+    print *,""
+    print *,""
+    print *," Written by Charlie Heaton and Jake Cardwell  "
+    print *,""
+    print *,""
+    print *,"This program was designed to generate a simulation of a boundary &
+    &between two crystal lattices. The lattice is generated in a .pdb format designed &
+    &to be used by the NEW-DDPT program, for the purposes of analysing the mixing of &
+    &crystal structures"
+    print *,""
+    print *,""
+    print *,"Usage : gen.o [-help] [-type1 atom1] [-type2 atom2] [-a1 a1]&
+    & [-a2 a2] [-swaps swapfile]"
+    print *,""
+    print *,""
+    print *,"-help : will print out the help text for this program on the screen"
+    print *,"-type1, -type2 : will allow the user to designate a different two letter abbreviation &
+    & for the atoms in the crystal structure. If the user does not define, Mg and Ca will be used &
+    &by default"
+    print *,"-a1, -a2 : will allow the user to designate different lattice constants for the &
+    &two crystal lattices. If the user does not define, the lattice constants (a1 = 4.38 Angstroms) and &
+    &(a2 = 4.76 Angstroms) will be used by default"
+    print *,"-swaps : will allow the user to define if they want the swapping function to be &
+    &used. If the flag is not used, the program generates the default lattice. If the swapping &
+    &flag is used, the program reads the input file for pairs of atoms to swap"
+  end subroutine help
   
   
   subroutine savecoordinates(i, x, y, z, atype)
@@ -183,7 +213,7 @@ program GenLattice
     end do  
   800 continue  
   end subroutine
-  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  
   
   
   !Edit made by Charlie Heaton to allow for flag inputs

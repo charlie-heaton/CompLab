@@ -1,13 +1,14 @@
 program createswapfile
   implicit none
   integer, parameter :: dp = selected_real_kind(15,300), k15 = selected_int_kind(15)
-  integer, allocatable :: targets(:), swaps(:,:), uniformarrayint(:)
+  integer(kind=k15), allocatable :: targets(:), swaps(:,:), uniformarrayint(:)
   real(kind=dp), allocatable :: uniformarray(:)
   integer :: i, in_unit, out_unit, istat, lines, lines2, lines3
-  integer(kind=k15) :: M = 4294967295_k15, seed
   character(len=100) :: errormsg
+  
   in_unit = 30
   lines = 0
+  
   open(file="targetswaps.pdb", unit = in_unit, status = "old", action = "read", iostat = istat, &
   & iomsg = errormsg)
   if (istat /= 0) print *, errormsg
@@ -41,15 +42,5 @@ program createswapfile
   do i = 1, lines2
     write(60,*) swaps(i,1), swaps(i,2)
   end do
-contains
-function UniformRandomNumbers(x)
-    implicit none
-    integer, parameter :: k15 = selected_int_kind(15)
-    integer(kind=k15), parameter :: A = 1103515245_k15, B = 12345, M = 4294967295_k15 ! The magic numbers are set in stone so that the code can't mess with them
-    integer(kind=k15), intent(in) :: x ! The previous random number is passed in
-    integer(kind=k15) :: UniformRandomNumbers
-    UniformRandomNumbers = int(mod(A*(x)+B,M),k15)
-  end function UniformRandomNumbers
-
 
 end program createswapfile
