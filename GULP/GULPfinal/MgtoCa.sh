@@ -7,7 +7,6 @@ do
 #Inputs variable to MgOtoCa.f90, and puts output in new .dat file
     rm -f MgOtoCa.in
     echo $i> MgOtoCa.in
-    rm MgOtoCa.dat
     ./a.out < MgOtoCa.in 
     mv MgOtoCa.dat MgO_${i}Ca.gin
 
