@@ -47,7 +47,8 @@ will automatically use the path you have specified.
 Q: 'What are some other keywords I can try adding to the base input file MgO.gin?'
 
 A: free_energy,
-Note for free_energy: Not correctly functioning for one of the ratios of Mg to Ca
+Note for free_energy: Optimisation not correctly functioning for one of the ratios of Mg to Ca. For Gibbs
+free energy to be calculated, optimisation must be disabled by deleting keyword 'opti' from input file MgO.gin
 When adding keywords to the input file it is vital that you add these keywords to the first
-line of only the MgO.gin input file (ie not MgO_0Ca.gin, MgO_1Ca.gin etc.). This is because it
+line of only the MgO.gin input file (NOT MgO_0Ca.gin, MgO_1Ca.gin etc.). This is because it
 is used as the basis for each input file created.
