@@ -9,8 +9,8 @@ integer, parameter :: dp = selected_real_kind(15,300)
 integer :: j    !Integer to count lines read
 integer, parameter :: &
      n=14, &    !line to skip first
-     p=4,   &   !lines to read
-     q=1,    &  !lines to skip over blank space
+     p=4,  &    !lines to read
+     q=1,  &    !lines to skip over blank space
      r= 34      !rest of the lines needed to read into file
 
 !defines elements read from MgO; Mg atoms, Ca atoms and the entire line
@@ -74,3 +74,4 @@ close(unit=12)
 close(unit=13)
 
 end program MgOtoCa
+
