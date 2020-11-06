@@ -224,14 +224,14 @@ PROGRAM genENM
                   kij = ACa*dexp((-dist)/RhoCa)
                END IF
             ELSE 
-                  kij=kij
+                  kij=kij*dist**2
             END IF
 
             !--------------------------------------------------------------------------
             ! Calculation of the element harmonic potential
             IF (dist.le.cutoff) THEN 
                
-               entot=entot+kij*dist2
+               entot=entot+kij
  
                ll=ll+1
                IF (j.gt.i) THEN

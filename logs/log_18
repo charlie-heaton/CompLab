@@ -1,0 +1,23 @@
+STARTING G E N L A T T I C E
+Program: ./GENLATTICE -a1 4.380 -a2 4.760 -type1 Mg -type2 Ca -swaps swapfile
+Total time: 0:00.01
+STARTING G E N E N M M
+Program: ./GENENMM -i input.pdb -mass -c 6
+Total time: 0:02.22
+STARTING D I A G S T D
+Program: ./DIAGSTD -i matrix.sdijf
+Total time: 39:39.19
+STARTING F R E Q E N
+Program: ./FREQEN -s 7 -e 36 -i matrix.eigenfacs
+Total time: 0:03.00
+STARTING C R O S C O R
+Program: ./CROSCOR -s 7 -e 36 -i matrix.eigenfacs
+Total time: 0:16.49
+STARTING S P A C I N G
+Program: ./SPACING -i input.pdb
+Total time: 0:01.92
+STARTING P L O T D I S T / C R O S S
+Program: python plot_dist_cross.py
+Total time: 1:31.79
+The free energy of the configuration is -66.5763
+ALL DONE
